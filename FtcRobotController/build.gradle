@@ -1,13 +1,14 @@
-java {
+/*java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
-}
+}*/
 import java.text.SimpleDateFormat
 
 //
 // build.gradle in FtcRobotController
 //
+//apply plugin: 'java-library'
 apply plugin: 'com.android.library'
 
 android {
