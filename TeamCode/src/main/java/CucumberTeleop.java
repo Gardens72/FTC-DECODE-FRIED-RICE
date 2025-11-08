@@ -36,6 +36,12 @@ public class CucumberTeleop extends LinearOpMode {
         if (gamepad2.b){
             hub.bob.setPower(0);
         }
+        if (gamepad2.x){
+            hub.marvo.setPower(1);
+        }
+        if (gamepad2.y){
+            hub.marvo.setPower(0);
+        }
         //if(gamepad.left_trigger>.1){
         //    hub.leftWheel.setPower(gamepad.left_trigger);
         //}

@@ -23,6 +23,7 @@ public class ControlHub {
     MecanumDrive drive;
 
     public CRServo bob;
+    public CRServo marvo;
     public Servo RegularServo;
     public DcMotor leftWheel;
 
@@ -42,6 +43,7 @@ public class ControlHub {
         //This is one of the motors to move the arm up and down
         //rightWheel = map.get(DcMotor.class, "rightWheel");
         bob=map.get(CRServo.class,"bob");
+        marvo=map.get(CRServo.class, "marvo");
         //bob is the servo on the top of the input
         intake=map.get(DcMotor.class, "intake");
         outtake = map.get(DcMotor.class, "outtake");
