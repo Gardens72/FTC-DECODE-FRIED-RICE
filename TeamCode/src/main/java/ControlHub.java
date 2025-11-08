@@ -24,6 +24,7 @@ public class ControlHub {
 
     public CRServo bob;
     public CRServo marvo;
+    public CRServo servo3;
     public Servo RegularServo;
     public DcMotor leftWheel;
 
@@ -44,6 +45,7 @@ public class ControlHub {
         //rightWheel = map.get(DcMotor.class, "rightWheel");
         bob=map.get(CRServo.class,"bob");
         marvo=map.get(CRServo.class, "marvo");
+        servo3=map.get(CRServo.class, "servo3");
         //bob is the servo on the top of the input
         intake=map.get(DcMotor.class, "intake");
         outtake = map.get(DcMotor.class, "outtake");
