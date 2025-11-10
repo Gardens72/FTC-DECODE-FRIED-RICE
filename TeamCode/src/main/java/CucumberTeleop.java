@@ -30,12 +30,19 @@ public class CucumberTeleop extends LinearOpMode {
         //telemetry.addLine("You're telling me a shrimp fried this rice?!");
         //telemetry.update();
 
-        if (gamepad2.a){
-            hub.bob.setPower(-1);
-            hub.marvo.setPower(-1);
-            hub.servo3.setPower(1);
+
+        //intake - left trigger , outtake - right trigger , left thumb up -> through
+        hub.outtake.setPower(gamepad2.left_trigger);
+        if (gamepad2.right_trigger > 0.1) {
+            hub.outtake2.setPower(-1);
+        }else{
+            hub.outtake2.setPower(0);
         }
-        if (gamepad2.b){
+        if (gamepad2.left_stick_y > 0.1) {
+            hub.bob.setPower(-1);
+            hub.marvo.setPower(1);
+            hub.servo3.setPower(1);
+        }else{
             hub.bob.setPower(0);
             hub.marvo.setPower(0);
             hub.servo3.setPower(0);
@@ -57,8 +64,8 @@ public class CucumberTeleop extends LinearOpMode {
             backLeftPower=0;
             backRightPower=0;
         }
-        hub.outtake.setPower(gamepad2.left_stick_y);
-        hub.outtake2.setPower(-gamepad2.right_stick_y);
+
+
         //if (gamepad.left_trigger>.1){
         //    hub.intake.setPower(1);
         //}
