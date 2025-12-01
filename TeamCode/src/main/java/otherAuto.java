@@ -11,8 +11,8 @@ import org.firstinspires.ftc.teamcode.MecanumDrive;
 
 //import org.firstinspires.ftc.teamcode.tuning.autoArms;
 
-@Autonomous(name = "BlueAuto")
-public class BlueAuto extends LinearOpMode {
+@Autonomous(name = "otherAuto")
+public class otherAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         ControlHub hub = new ControlHub();
@@ -23,10 +23,10 @@ public class BlueAuto extends LinearOpMode {
         //autoArms arms = new autoArms(hardwareMap);
 
         //TrajectoryActionBuilder test_trajectory = drive.actionBuilder(initialPose)
-                //.lineToX(52)
-                //.lineToY(60)
+        //.lineToX(52)
+        //.lineToY(60)
 
-                // go from start pos to near target and shoot
+        // go from start pos to near target and shoot
                 /*
                 .strafeTo(new Vector2d(-48,48))
                 .turn(Math.toRadians(-45))
@@ -43,23 +43,29 @@ public class BlueAuto extends LinearOpMode {
                 .strafeTo(new Vector2d(-53,0))
 
                  */
-                //should be -40 but changing for comp// hopecore
-                //.strafeTo(new Vector2d(400,0));
+        //should be -40 but changing for comp// hopecore
+        //.strafeTo(new Vector2d(400,0));
 
 
         //Action test_action = test_trajectory.build();
 
         waitForStart();
         hub.timer=new ElapsedTime();
-        while(hub.timer.seconds()<3){
+        while(hub.timer.seconds()<2){
             hub.leftBack.setPower(.2*.85);
             hub.rightBack.setPower(.2);
             hub.leftFront.setPower(.2*.85);
             hub.rightFront.setPower(.2*.85);
         }
+        while(hub.timer.seconds()<3){
+            hub.leftBack.setPower(.2*.85);
+            hub.rightBack.setPower(-.2);
+            hub.leftFront.setPower(-.2*.85);
+            hub.rightFront.setPower(.2*.85);
+        }
 
         //Actions.runBlocking(
-                //test_action
+        //test_action
         //);
     }
 

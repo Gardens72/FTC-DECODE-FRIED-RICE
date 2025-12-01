@@ -23,6 +23,7 @@ public class CucumberTeleop extends LinearOpMode {
     }
 
     public void motorAction(Gamepad gamepad, Gamepad gamepad2 ) {
+        double motorpower=.85;
         double y = -gamepad.left_stick_y; // Remember, Y stick value is reversed
         double x = gamepad.left_stick_x * 1.1; // Counteract imperfect strafing
         double rx = gamepad.right_stick_x;
@@ -32,20 +33,28 @@ public class CucumberTeleop extends LinearOpMode {
 
 
         //intake - left trigger , outtake - right trigger , left thumb up -> through
-        hub.outtake.setPower(gamepad2.left_trigger);
-        if (gamepad2.right_trigger > 0.1) {
-            hub.outtake2.setPower(-1);
+        hub.intake.setPower(gamepad2.right_stick_y);
+
+        if(gamepad2.right_trigger>.1){
+            hub.outtake.setPower(1);
         }else{
-            hub.outtake2.setPower(0);
+            hub.outtake.setPower(0);
         }
         if (gamepad2.left_stick_y > 0.1) {
             hub.bob.setPower(-1);
             hub.marvo.setPower(1);
             hub.servo3.setPower(1);
+            hub.servo4.setPower(1);
+        }else if(gamepad2.left_stick_y <-.1){
+            hub.bob.setPower(1);
+            hub.marvo.setPower(-1);
+            hub.servo3.setPower(-1);
+            hub.servo4.setPower(-1);
         }else{
             hub.bob.setPower(0);
             hub.marvo.setPower(0);
             hub.servo3.setPower(0);
+            hub.servo4.setPower(0);
         }
         //if(gamepad.left_trigger>.1){
         //    hub.leftWheel.setPower(gamepad.left_trigger);
@@ -75,10 +84,10 @@ public class CucumberTeleop extends LinearOpMode {
         //}
 
         if (!gamepad.x){
-            hub.leftFront.setPower(frontLeftPower);
+            hub.leftFront.setPower(frontLeftPower*motorpower);
             hub.leftBack.setPower(backLeftPower);
-            hub.rightFront.setPower(frontRightPower);
-            hub.rightBack.setPower(backRightPower);
+            hub.rightFront.setPower(frontRightPower*motorpower);
+            hub.rightBack.setPower(backRightPower*motorpower);
         }
     }
 

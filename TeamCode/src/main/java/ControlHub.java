@@ -18,12 +18,11 @@ public class ControlHub {
     public DcMotor rightBack;
     public DcMotor intake;
     public DcMotor outtake;
-    public DcMotor outtake2;
     public ElapsedTime timer;
     MecanumDrive drive;
-
     public CRServo bob;
     public CRServo marvo;
+    public CRServo servo4;
     public CRServo servo3;
     public Servo RegularServo;
     public DcMotor leftWheel;
@@ -38,7 +37,8 @@ public class ControlHub {
         leftBack = map.get(DcMotor.class, "leftBack");
         rightBack = map.get(DcMotor.class, "rightBack");
         leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        //leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
         //This is one of the motors to move the arm up and down
         //leftWheel = map.get(DcMotor.class, "leftWheel");
         //This is one of the motors to move the arm up and down
@@ -46,10 +46,12 @@ public class ControlHub {
         bob=map.get(CRServo.class,"bob");
         marvo=map.get(CRServo.class, "marvo");
         servo3=map.get(CRServo.class, "servo3");
+        servo4=map.get(CRServo.class, "servo4");
         //bob is the servo on the top of the input
         intake=map.get(DcMotor.class, "intake");
+
         outtake = map.get(DcMotor.class, "outtake");
-        outtake2 = map.get(DcMotor.class, "outtake2");
+        outtake.setDirection(DcMotorSimple.Direction.REVERSE);
         //camera=map.get(WebcamName.class,"camera");
         drive=new MecanumDrive(map,initialPose);
     }
